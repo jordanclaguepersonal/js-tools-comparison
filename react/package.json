@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html -d ../dist/react",
-    "build": "echo \"Bundling...\" && parcel build index.html -d ../dist/react"
+    "build": "echo \"Bundling...\" && parcel build index.html -d ../dist/react --public-url ./"
   },
   "author": "",
   "license": "ISC",
