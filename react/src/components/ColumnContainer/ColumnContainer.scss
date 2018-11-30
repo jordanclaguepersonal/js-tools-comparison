@@ -1,0 +1,12 @@
+@import '../../globals.scss';
+
+.columnContainer {
+  min-height: 90vh;
+  padding-top: 2em;
+  padding-bottom: 4em;
+
+  &__content {
+    height: 80vh;
+    min-height: 80vh;
+  }
+}
