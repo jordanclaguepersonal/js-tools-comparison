@@ -9,22 +9,70 @@ class App extends React.Component {
       columns: [],
       tasks: []
     }
-    // this.state = {
-    //   columns: [
-    //     {
-    //       id: 'todo',
-    //       label: 'To-Do'
-    //     }
-    //   ],
-    //   tasks: [
-    //     {
-    //       id: 1,
-    //       columnId: 'todo',
-    //       title: 'Example task',
-    //       description: 'Lorem ipsum dolor sit amet'
-    //     }
-    //   ]
-    // }
+
+    this.createColumn = this.createColumn.bind(this)
+    this.deleteColumn = this.deleteColumn.bind(this)
+    this.createTask = this.createTask.bind(this)
+    this.deleteTask = this.deleteTask.bind(this)
+  }
+
+  createColumn (columnName = 'Unknown') {
+    const nextId = this.state.columns.length + 1
+    const newColumns = [
+      ...this.state.columns,
+      {
+        id: nextId,
+        label: columnName
+      }
+    ]
+
+    return this.setState({
+      columns: newColumns
+    })
+  }
+
+  deleteColumn (columnId) {
+    // For now, let's just orphan tasks.
+    const tasksInColumn = this.state.tasks.filter(task => {
+      return task.column === columnId
+    })
+
+    tasksInColumn.forEach(taskInColumn => {
+      this.deleteTask(taskInColumn.id)
+    })
+
+    const remainingColumns = this.state.columns.filter(column => {
+      return columnId !== column.id
+    })
+
+    return this.setState({
+      columns: remainingColumns
+    })
+  }
+
+  createTask (columnId, taskTitle, taskDescription) {
+    const nextId = this.state.tasks.length + 1
+    return this.setState({
+      tasks: [
+        ...this.state.tasks,
+        {
+          id: nextId,
+          column: columnId,
+          title: taskTitle,
+          description: taskDescription
+        }
+      ]
+    })
+  }
+
+  deleteTask (taskId) {
+    const remainingTasks = this.state.tasks.filter(task => {
+      return taskId !== task.id
+    })
+
+    return this.setState({
+      tasks: remainingTasks
+    })
   }
 
   render () {
@@ -32,7 +80,12 @@ class App extends React.Component {
       <div className="container">
         <header className="appContainer">
           <h1>React Planner</h1>
-          <ColumnContainer columns={this.state.columns} tasks={this.state.tasks} />
+          <ColumnContainer columns={this.state.columns}
+                           tasks={this.state.tasks}
+                           createColumn={this.createColumn}
+                           deleteColumn={this.deleteColumn}
+                           createTask={this.createTask}
+                           deleteTask={this.deleteTask} />
         </header>
       </div>
     )

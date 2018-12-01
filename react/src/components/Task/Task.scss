@@ -5,6 +5,12 @@
   color: white;
   border-radius: 0.5em;
   padding: 1em;
+
+  &--placeholder {
+    border: 1.5px dashed red;
+    opacity: 0.4;
+    min-height: auto !important;
+  }
 }
 
 .task:not(:first-child) {
