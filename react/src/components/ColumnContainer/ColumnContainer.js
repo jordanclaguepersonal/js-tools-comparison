@@ -26,7 +26,8 @@ class ColumnContainer extends React.Component {
                            tasks={this.getTasksForColumn(column.id)}
                            deleteColumn={this.props.deleteColumn}
                            createTask={this.props.createTask}
-                           deleteTask={this.props.deleteTask} />
+                           deleteTask={this.props.deleteTask}
+                           updateTaskColumn={this.props.updateTaskColumn} />
           })}
           {this.props.columns.length < 4 && (
             <ColumnPlaceholder createColumn={this.props.createColumn} />

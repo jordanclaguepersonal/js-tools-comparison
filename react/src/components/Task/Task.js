@@ -4,11 +4,16 @@ import './Task.scss'
 class Task extends React.Component {
   constructor (props) {
     super(props)
+    this.handleDragStart = this.handleDragStart.bind(this)
+  }
+
+  handleDragStart (event) {
+    event.dataTransfer.setData('text', JSON.stringify(this.props.task))
   }
 
   render () {
     return (
-      <article className="task task">
+      <article className="task task" draggable="true" onDragStart={this.handleDragStart}>
         <button onClick={() => this.props.deleteTask(this.props.task.id)} type="button" className="close" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

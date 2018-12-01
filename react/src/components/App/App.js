@@ -14,6 +14,7 @@ class App extends React.Component {
     this.deleteColumn = this.deleteColumn.bind(this)
     this.createTask = this.createTask.bind(this)
     this.deleteTask = this.deleteTask.bind(this)
+    this.updateTaskColumn = this.updateTaskColumn.bind(this)
   }
 
   createColumn (columnName = 'Unknown') {
@@ -75,6 +76,17 @@ class App extends React.Component {
     })
   }
 
+  updateTaskColumn (taskId, newColumnId) {
+    let tasks = this.state.tasks.map((task, index) => {
+      if (task.id === taskId) task.column = newColumnId
+      return task
+    })
+
+    return this.setState({
+      tasks: tasks
+    })
+  }
+
   render () {
     return (
       <div className="container">
@@ -85,7 +97,8 @@ class App extends React.Component {
                            createColumn={this.createColumn}
                            deleteColumn={this.deleteColumn}
                            createTask={this.createTask}
-                           deleteTask={this.deleteTask} />
+                           deleteTask={this.deleteTask}
+                           updateTaskColumn={this.updateTaskColumn} />
         </header>
       </div>
     )

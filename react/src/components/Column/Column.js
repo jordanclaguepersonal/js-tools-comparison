@@ -6,11 +6,25 @@ import './Column.scss'
 class Column extends React.Component {
   constructor (props) {
     super(props)
+    this.handleDrop = this.handleDrop.bind(this)
+    this.handleDragover = this.handleDragover.bind(this)
+  }
+
+  handleDrop(event) {
+    event.preventDefault()
+    const data = event.dataTransfer.getData('text')
+    const parsedData = JSON.parse(data)
+
+    return this.props.updateTaskColumn(parsedData.id, this.props.column.id)
+  }
+
+  handleDragover(event) {
+    event.preventDefault()
   }
 
   render () {
     return (
-      <section className="column col-3">
+      <section className="column col-3" onDragOver={this.handleDragover} onDrop={this.handleDrop}>
         <div className="column__panel">
           <div className="column__panel-heading">
             <button onClick={() => this.props.deleteColumn(this.props.column.id)} type="button" className="close" aria-label="Close">
