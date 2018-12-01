@@ -6,10 +6,11 @@ import ColumnPlaceholder from '../ColumnPlaceholder/ColumnPlaceholder'
 class ColumnContainer extends React.Component {
   constructor(props) {
     super(props)
-    this.getTasksForColumn = this.getTasksForColumn.bind(this)
+
+    this.getTasksForColumn = this._getTasksForColumn.bind(this)
   }
 
-  getTasksForColumn (columnId) {
+  _getTasksForColumn (columnId) {
     return this.props.tasks.filter((task) => {
       return task.column === columnId
     })
@@ -20,18 +21,18 @@ class ColumnContainer extends React.Component {
       <main className="columnContainer">
         <em className="columnContainer__summary">You have used {this.props.columns.length} out of a possible 4 columns.</em>
         <div className="columnContainer__content row">
+
           {this.props.columns.map((column, index) => {
             return <Column key={index}
-                           column={column}
-                           tasks={this.getTasksForColumn(column.id)}
-                           deleteColumn={this.props.deleteColumn}
-                           createTask={this.props.createTask}
-                           deleteTask={this.props.deleteTask}
-                           updateTaskColumn={this.props.updateTaskColumn} />
+                           data={column}
+                           tasks={this._getTasksForColumn(column.id)}
+                           handlers={this.props.handlers} />
           })}
+
           {this.props.columns.length < 4 && (
-            <ColumnPlaceholder createColumn={this.props.createColumn} />
+            <ColumnPlaceholder handlers={this.props.handlers} />
           )}
+
         </div>
       </main>
     )

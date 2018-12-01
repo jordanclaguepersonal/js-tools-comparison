@@ -6,6 +6,7 @@ import './Column.scss'
 class Column extends React.Component {
   constructor (props) {
     super(props)
+
     this.handleDrop = this.handleDrop.bind(this)
     this.handleDragover = this.handleDragover.bind(this)
   }
@@ -15,7 +16,7 @@ class Column extends React.Component {
     const data = event.dataTransfer.getData('text')
     const parsedData = JSON.parse(data)
 
-    return this.props.updateTaskColumn(parsedData.id, this.props.column.id)
+    return this.props.handlers.moveTask(parsedData.id, this.props.data.id)
   }
 
   handleDragover(event) {
@@ -23,20 +24,25 @@ class Column extends React.Component {
   }
 
   render () {
+    const { deleteColumn } = this.props.handlers
+
     return (
       <section className="column col-3" onDragOver={this.handleDragover} onDrop={this.handleDrop}>
         <div className="column__panel">
           <div className="column__panel-heading">
-            <button onClick={() => this.props.deleteColumn(this.props.column.id)} type="button" className="close" aria-label="Close">
+            <button onClick={() => deleteColumn(this.props.data.id)} type="button" className="close" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
             <h2 className="column__panel-title">
-              {this.props.column.label} {this.props.tasks.length ? `(${this.props.tasks.length})` : ''}
+              {this.props.data.label} {this.props.tasks.length ? `(${this.props.tasks.length})` : ''}
             </h2>
           </div>
+
           <div className="column__panel-content">
-            {this.props.tasks.map(task => <Task key={task.id} task={task} deleteTask={this.props.deleteTask}/>)}
-            <TaskPlaceholder columnId={this.props.column.id} createTask={this.props.createTask} />
+            {this.props.tasks.map(task => {
+              return <Task key={task.id} task={task} handlers={this.props.handlers} />
+            })}
+            <TaskPlaceholder columnId={this.props.data.id} handlers={this.props.handlers} />
           </div>
         </div>
       </section>

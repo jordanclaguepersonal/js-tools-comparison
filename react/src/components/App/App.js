@@ -5,16 +5,19 @@ import ColumnContainer from '../ColumnContainer/ColumnContainer'
 class App extends React.Component {
   constructor (props) {
     super(props)
+
     this.state = {
       columns: [],
       tasks: []
     }
 
-    this.createColumn = this.createColumn.bind(this)
-    this.deleteColumn = this.deleteColumn.bind(this)
-    this.createTask = this.createTask.bind(this)
-    this.deleteTask = this.deleteTask.bind(this)
-    this.updateTaskColumn = this.updateTaskColumn.bind(this)
+    this.handlers = {
+      createColumn: this.createColumn.bind(this),
+      deleteColumn: this.deleteColumn.bind(this),
+      createTask: this.createTask.bind(this),
+      deleteTask: this.deleteTask.bind(this),
+      moveTask: this.moveTask.bind(this)
+    }
   }
 
   createColumn (columnName = 'Unknown') {
@@ -76,7 +79,7 @@ class App extends React.Component {
     })
   }
 
-  updateTaskColumn (taskId, newColumnId) {
+  moveTask (taskId, newColumnId) {
     let tasks = this.state.tasks.map((task, index) => {
       if (task.id === taskId) task.column = newColumnId
       return task
@@ -94,11 +97,7 @@ class App extends React.Component {
           <h1>React Planner</h1>
           <ColumnContainer columns={this.state.columns}
                            tasks={this.state.tasks}
-                           createColumn={this.createColumn}
-                           deleteColumn={this.deleteColumn}
-                           createTask={this.createTask}
-                           deleteTask={this.deleteTask}
-                           updateTaskColumn={this.updateTaskColumn} />
+                           handlers={this.handlers} />
         </header>
       </div>
     )

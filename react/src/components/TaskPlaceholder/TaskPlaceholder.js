@@ -3,6 +3,7 @@ import React from 'react'
 class TaskPlaceholder extends React.Component {
   constructor (props) {
     super(props)
+
     this.state = {
       isEditing: false,
       title: '',
@@ -16,9 +17,8 @@ class TaskPlaceholder extends React.Component {
   }
 
   toggleEditingState() {
-    let currentState = this.state.isEditing
     this.setState({
-      isEditing: !currentState
+      isEditing: !this.state.isEditing
     })
   }
 
@@ -36,7 +36,7 @@ class TaskPlaceholder extends React.Component {
 
   createTask (event) {
     event.preventDefault()
-    this.props.createTask(this.props.columnId, this.state.title, this.state.description)
+    this.props.handlers.createTask(this.props.columnId, this.state.title, this.state.description)
     this.setState({
       isEditing: false,
       title: '',
@@ -48,9 +48,7 @@ class TaskPlaceholder extends React.Component {
     return (
       <article className="task task--placeholder">
         <div className="form-group">
-          {!this.state.isEditing && (
-            <p onClick={this.toggleEditingState}>Click to add task...</p>
-          )}
+
           {this.state.isEditing && (
             <div>
               <input onInput={this.handleTitleInput} type="text" className="form-control mb-3" placeholder="What is the task?" />
@@ -61,6 +59,11 @@ class TaskPlaceholder extends React.Component {
               }
             </div>
           )}
+
+          {!this.state.isEditing && (
+            <p onClick={this.toggleEditingState}>Click to add task...</p>
+          )}
+
         </div>
       </article>
     )

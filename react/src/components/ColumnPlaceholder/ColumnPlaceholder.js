@@ -4,6 +4,7 @@ import '../column/column.scss'
 class ColumnPlaceholder extends React.Component {
   constructor (props) {
     super(props)
+
     this.state = {
       isEditing: false,
       columnName: ''
@@ -15,9 +16,8 @@ class ColumnPlaceholder extends React.Component {
   }
 
   toggleEditingState () {
-    let currentState = this.state.isEditing
     this.setState({
-      isEditing: !currentState
+      isEditing: !this.state.isEditing
     })
   }
 
@@ -30,7 +30,7 @@ class ColumnPlaceholder extends React.Component {
 
   createColumn (event) {
     event.preventDefault()
-    this.props.createColumn(this.state.columnName)
+    this.props.handlers.createColumn(this.state.columnName)
     this.setState({
       isEditing: false,
       columnName: ''
@@ -41,9 +41,7 @@ class ColumnPlaceholder extends React.Component {
     return (
       <section className="column col-3">
         <div className="column__panel column__panel--placeholder">
-          {!this.state.isEditing && (
-            <p onClick={this.toggleEditingState}>Click to add column...</p>
-          )}
+
           {this.state.isEditing && (
             <div className="input-group mb-3">
               <input onInput={this.handleInput} type="text" className="form-control" placeholder="Column name" />
@@ -55,6 +53,11 @@ class ColumnPlaceholder extends React.Component {
               </div>
             </div>
           )}
+
+          {!this.state.isEditing && (
+            <p onClick={this.toggleEditingState}>Click to add column...</p>
+          )}
+
         </div>
       </section>
     )

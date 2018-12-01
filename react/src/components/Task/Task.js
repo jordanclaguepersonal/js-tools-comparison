@@ -4,6 +4,7 @@ import './Task.scss'
 class Task extends React.Component {
   constructor (props) {
     super(props)
+
     this.handleDragStart = this.handleDragStart.bind(this)
   }
 
@@ -12,9 +13,11 @@ class Task extends React.Component {
   }
 
   render () {
+    const { deleteTask } = this.props.handlers
+
     return (
       <article className="task task" draggable="true" onDragStart={this.handleDragStart}>
-        <button onClick={() => this.props.deleteTask(this.props.task.id)} type="button" className="close" aria-label="Close">
+        <button onClick={() => deleteTask(this.props.task.id)} type="button" className="close" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         <h3 className="task__title">{this.props.task.title}</h3>
