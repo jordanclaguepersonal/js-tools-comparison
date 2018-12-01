@@ -1,5 +1,6 @@
 import React from 'react'
 import './Task.scss'
+import PropTypes from 'prop-types'
 
 class Task extends React.Component {
   constructor (props) {
@@ -27,6 +28,11 @@ class Task extends React.Component {
       </article>
     )
   }
+}
+
+Task.propTypes = {
+  task: PropTypes.object,
+  handlers: PropTypes.object
 }
 
 export default Task

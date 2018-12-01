@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class TaskPlaceholder extends React.Component {
   constructor (props) {
@@ -61,13 +62,18 @@ class TaskPlaceholder extends React.Component {
           )}
 
           {!this.state.isEditing && (
-            <p onClick={this.toggleEditingState}>Click to add task...</p>
+            <span onClick={this.toggleEditingState}>Click to add task...</span>
           )}
 
         </div>
       </article>
     )
   }
+}
+
+TaskPlaceholder.propTypes = {
+  columnId: PropTypes.number,
+  handlers: PropTypes.object
 }
 
 export default TaskPlaceholder

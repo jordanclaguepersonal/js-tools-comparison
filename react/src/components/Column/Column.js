@@ -2,6 +2,7 @@ import React from 'react'
 import Task from '../Task/Task.js'
 import TaskPlaceholder from '../TaskPlaceholder/TaskPlaceholder'
 import './Column.scss'
+import PropTypes from 'prop-types'
 
 class Column extends React.Component {
   constructor (props) {
@@ -36,6 +37,7 @@ class Column extends React.Component {
             <h2 className="column__panel-title">
               {this.props.data.label} {this.props.tasks.length ? `(${this.props.tasks.length})` : ''}
             </h2>
+            <hr/>
           </div>
 
           <div className="column__panel-content">
@@ -48,6 +50,12 @@ class Column extends React.Component {
       </section>
     )
   }
+}
+
+Column.propTypes = {
+  data: PropTypes.object,
+  tasks: PropTypes.array,
+  handlers: PropTypes.object
 }
 
 export default Column

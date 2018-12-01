@@ -1,5 +1,6 @@
 import React from 'react'
 import '../column/column.scss'
+import PropTypes from 'prop-types'
 
 class ColumnPlaceholder extends React.Component {
   constructor (props) {
@@ -43,7 +44,7 @@ class ColumnPlaceholder extends React.Component {
         <div className="column__panel column__panel--placeholder">
 
           {this.state.isEditing && (
-            <div className="input-group mb-3">
+            <div className="input-group">
               <input onInput={this.handleInput} type="text" className="form-control" placeholder="Column name" />
               <div className="input-group-append">
                 {this.state.columnName.length
@@ -55,13 +56,17 @@ class ColumnPlaceholder extends React.Component {
           )}
 
           {!this.state.isEditing && (
-            <p onClick={this.toggleEditingState}>Click to add column...</p>
+            <span onClick={this.toggleEditingState}>Click to add column...</span>
           )}
 
         </div>
       </section>
     )
   }
+}
+
+ColumnPlaceholder.propTypes = {
+  handlers: PropTypes.object
 }
 
 export default ColumnPlaceholder

@@ -2,6 +2,7 @@ import React from 'react'
 import './ColumnContainer.scss'
 import Column from '../Column/Column.js'
 import ColumnPlaceholder from '../ColumnPlaceholder/ColumnPlaceholder'
+import PropTypes from 'prop-types'
 
 class ColumnContainer extends React.Component {
   constructor(props) {
@@ -37,6 +38,12 @@ class ColumnContainer extends React.Component {
       </main>
     )
   }
+}
+
+ColumnContainer.propTypes = {
+  columns: PropTypes.array,
+  tasks: PropTypes.array,
+  handlers: PropTypes.object
 }
 
 export default ColumnContainer

@@ -93,12 +93,14 @@ class App extends React.Component {
   render () {
     return (
       <div className="container">
-        <header className="appContainer">
+        <header className="container--header">
           <h1>React Planner</h1>
-          <ColumnContainer columns={this.state.columns}
-                           tasks={this.state.tasks}
-                           handlers={this.handlers} />
         </header>
+        <div className="appContainer">
+          <ColumnContainer columns={this.state.columns}
+            tasks={this.state.tasks}
+            handlers={this.handlers} />
+        </div>
       </div>
     )
   }
