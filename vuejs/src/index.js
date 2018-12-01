@@ -1,9 +1,7 @@
 import Vue from 'vue'
-const App = require('./components/App.vue.js')
+import App from './components/App.vue'
 
 new Vue({
   el: '#app',
-  template: `
-    <app></app>
-  `
+  render: (createElement) => createElement(App)
 })
