@@ -38,5 +38,23 @@
   </section>
 </template>
 
-<style scoped>
-</style
+<style lang="scss" scoped>
+  .column {
+    min-height: 100%;
+    padding: 1em;
+
+    &__panel {
+      min-height: 100%;
+      padding: 1em;
+      background-color: white;
+      border-radius: 0.25em;
+
+      &--placeholder {
+        background-color: grey !important;
+        border: 1.5px dashed black;
+        opacity: 0.4;
+        min-height: auto !important;
+      }
+    }
+  }
+</style>
