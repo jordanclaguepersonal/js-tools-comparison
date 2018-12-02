@@ -1,5 +1,5 @@
 import React from 'react'
-import '../column/column.scss'
+import '../Column/Column.scss'
 import PropTypes from 'prop-types'
 
 class ColumnPlaceholder extends React.Component {
