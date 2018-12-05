@@ -23,6 +23,14 @@
         })
       },
       deleteColumn: function (cid) {
+        const tasksInColumn = this.tasks.filter(task => {
+          return task.column === cid
+        })
+
+        tasksInColumn.forEach(task => {
+          return this.deleteTask(task.id)
+        })
+
         this.columns = this.columns.filter(column => {
           return column.id !== cid
         })
@@ -65,5 +73,23 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+  .container {
+    height: 100%;
+    min-height: 100%;
+    padding-bottom: 2em;
+
+    &--header {
+      font-family: 'Rock Salt', cursive;
+      text-align: center;
+      color: white;
+      padding-top: 2em;
+      padding-bottom: 2em;
+    }
+
+    .appContainer {
+      font-family: 'Lato', sans-serif;
+      padding-bottom: 1em;
+    }
+  }
 </style>
