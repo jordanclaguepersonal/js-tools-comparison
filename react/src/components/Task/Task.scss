@@ -1,13 +1,13 @@
 @import '../../globals.scss';
 
 .task {
-  background-color: crimson;
-  color: white;
+  background-color: $secondary;
+  color: $tertiary;
   border-radius: 0.5em;
   padding: 1em;
 
   &--placeholder {
-    border: 1.5px dashed $grey;
+    border: 1.5px dashed $outline;
     opacity: 0.4;
     min-height: auto !important;
   }

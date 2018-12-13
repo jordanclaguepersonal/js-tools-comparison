@@ -17,7 +17,7 @@ class Task extends React.Component {
     const { deleteTask } = this.props.handlers
 
     return (
-      <article className="task task" draggable="true" onDragStart={this.handleDragStart}>
+      <article className="task" draggable="true" onDragStart={this.handleDragStart}>
         <button onClick={() => deleteTask(this.props.task.id)} type="button" className="close" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

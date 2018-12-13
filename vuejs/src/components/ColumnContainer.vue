@@ -26,7 +26,7 @@
 
 <template>
   <main class="columnContainer">
-    <!-- <em class="columnContainer__summary">You have used {{ columns.length }} out of a possible 4 columns.</em> -->
+    <em class="columnContainer__summary">You have used {{ columns.length }} out of a possible 4 columns.</em>
     <div class="columnContainer__content row">
       <column v-for="column in columns" :key="column.id" :column="column" :tasks="getTasksForColumn(column.id)"></column>
       <column-placeholder v-if="columns.length < 4"></column-placeholder>
@@ -35,6 +35,8 @@
 </template>
 
 <style lang="scss" scoped>
+  @import '../globals.scss';
+
   .columnContainer {
     min-height: 90vh;
     padding-bottom: 4em;

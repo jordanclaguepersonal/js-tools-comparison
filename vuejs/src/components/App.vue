@@ -74,13 +74,14 @@
 </template>
 
 <style lang="scss" scoped>
+  @import '../globals.scss';
+
   .container {
     height: 100%;
     min-height: 100%;
     padding-bottom: 2em;
 
     &--header {
-      font-family: 'Rock Salt', cursive;
       text-align: center;
       color: white;
       padding-top: 2em;

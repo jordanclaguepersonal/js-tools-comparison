@@ -29,21 +29,13 @@
 </template>
 
 <style lang="scss" scoped>
+  @import '../globals.scss';
+
   .task {
-    background-color: crimson;
-    color: white;
+    background-color: $secondary;
+    color: $tertiary;
     border-radius: 0.5em;
     padding: 1em;
-
-    &--placeholder {
-      border: 1.5px dashed grey;
-      opacity: 0.4;
-      min-height: auto !important;
-    }
-
-    .form-group {
-      margin-bottom: 0;
-    }
 
     &:not(:first-child) {
       margin-top: 1em;
