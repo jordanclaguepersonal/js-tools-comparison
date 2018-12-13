@@ -39,6 +39,12 @@
 </template>
 
 <style lang="scss" scoped>
+  // We don't need to re-define these in React.
+  // Because they're scoped to the component,
+  // styles don't pass down.
+
+  @import '../globals.scss';
+
   .column {
     min-height: 100%;
     padding: 1em;
@@ -46,12 +52,12 @@
     &__panel {
       min-height: 100%;
       padding: 1em;
-      background-color: white;
+      background-color: $tertiary;
       border-radius: 0.25em;
 
       &--placeholder {
-        background-color: grey !important;
-        border: 1.5px dashed black;
+        background-color: $outline !important;
+        border: 1.5px dashed $dark;
         opacity: 0.4;
         min-height: auto !important;
       }

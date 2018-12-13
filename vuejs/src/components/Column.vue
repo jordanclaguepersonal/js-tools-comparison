@@ -53,6 +53,8 @@
 </template>
 
 <style lang="scss" scoped>
+  @import '../globals.scss';
+
   .column {
     min-height: 100%;
     padding: 1em;
@@ -60,7 +62,7 @@
     &__panel {
       min-height: 100%;
       padding: 1em;
-      background-color: white;
+      background-color: $tertiary;
       border-radius: 0.25em;
     }
   }

@@ -51,14 +51,14 @@ class TaskPlaceholder extends React.Component {
         <div className="form-group">
 
           {this.state.isEditing && (
-            <div>
+            <React.Fragment>
               <input onInput={this.handleTitleInput} type="text" className="form-control mb-3" placeholder="What is the task?" />
               <textarea onInput={this.handleDescriptionInput} className="form-control mb-3" id="exampleFormControlTextarea1" rows="3" placeholder="Any other details..."></textarea>
               {this.state.title.length
                 ? <button onClick={this.createTask} className="btn btn-block btn-success" type="button">Create</button>
                 : <button onClick={this.toggleEditingState} className="btn btn-block btn-danger" type="button">Cancel</button>
               }
-            </div>
+            </React.Fragment>
           )}
 
           {!this.state.isEditing && (
