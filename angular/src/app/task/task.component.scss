@@ -1,0 +1,12 @@
+@import '../styles/colours.scss';
+
+.task {
+  background-color: $secondary;
+  color: $tertiary;
+  border-radius: 0.5em;
+  padding: 1em;
+
+  &:not(:first-child) {
+    margin-top: 1em;
+  }
+}

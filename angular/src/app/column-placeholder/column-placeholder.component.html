@@ -1,0 +1,14 @@
+<section class="column">
+  <div class="column__panel column__panel--placeholder">
+    <span *ngIf="!isEditing" (click)="toggleEditing()">Click to add column...</span>
+    <div *ngIf="isEditing">
+      <div class="input-group">
+        <input #typedName type="text" (keyup)="updateName(typedName.value)" (keyup.enter)="createColumn()" (blur)="createColumn()" class="form-control" placeholder="Column name" />
+        <div class="input-group-append">
+          <button *ngIf="name.length" (click)="createColumn()" class="btn btn-success" type="button">Create</button>
+          <button *ngIf="!name.length" (click)="toggleEditing()" class="btn btn-danger" type="button">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

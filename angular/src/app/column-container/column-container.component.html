@@ -1,0 +1,7 @@
+<main class="columnContainer">
+  <em class="columnContainer__summary">You have used {{stateService.getColumns().length}} out of a possible 4 columns.</em>
+  <div class="columnContainer__content row">
+    <app-column *ngFor="let column of stateService.getColumns(); index as i" [key]="i" [column]="column"></app-column>
+    <app-column-placeholder *ngIf="stateService.getColumns().length < 4"></app-column-placeholder>
+  </div>
+</main>

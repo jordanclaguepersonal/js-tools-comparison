@@ -1,0 +1,17 @@
+<!-- <section class="column col-3" @dragover.prevent="" @drop.prevent="handleDrop($event)"> -->
+<section class="column" (drop)="handleDrop($event)" (dragover)="handleDragover($event)">
+  <div class="column__panel">
+    <div class="column__panel-heading">
+      <button (click)="deleteColumn()" type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h2 class="column__panel-title" [innerHtml]="columnTitle"></h2>
+      <hr />
+    </div>
+
+    <div class="column__panel-content">
+      <app-task *ngFor="let task of columnTasks" [key]="task.id" [task]="task"></app-task>
+      <app-task-placeholder [cid]="column.id"></app-task-placeholder>
+    </div>
+  </div>
+</section>

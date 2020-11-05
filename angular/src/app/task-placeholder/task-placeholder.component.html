@@ -1,0 +1,9 @@
+<article class="task task--placeholder">
+  <span *ngIf="!isEditing" (click)="toggleEditing()">Click to add task...</span>
+  <div *ngIf="isEditing" class="form-group">
+    <input #typedTitle (keyup)="updateTitle(typedTitle.value)" class="form-control mb-3" type="text" placeholder="What is the task?" />
+    <textarea #typedDescription (keyup)="updateDescription(typedDescription.value)" class="form-control mb-3" rows="3" placeholder="Any other details..."></textarea>
+    <button *ngIf="title.length" (click)="createTask(cid)" class="btn btn-block btn-success" type="button">Create</button>
+    <button *ngIf="!title.length" (click)="toggleEditing()" class="btn btn-block btn-danger" type="button">Cancel</button>
+  </div>
+</article>
