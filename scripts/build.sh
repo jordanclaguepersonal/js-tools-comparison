@@ -2,6 +2,7 @@
 startingDirectory="$PWD"
 
 echo "Copying static files to dist/"
+mkdir "$startingDirectory/dist/"
 cp "$startingDirectory/index.html" "$startingDirectory/dist"
 cp "$startingDirectory/styles.css" "$startingDirectory/dist"
 
