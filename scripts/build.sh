@@ -1,6 +1,10 @@
 #!/bin/bash
 startingDirectory="$PWD"
 
+echo "Copying static files to dist/"
+cp "$startingDirectory/index.html" "$startingDirectory/dist"
+cp "$startingDirectory/styles.css" "$startingDirectory/dist"
+
 reactDirectory="$startingDirectory/react"
 echo "Building React app located at: $reactDirectory"
 cd "$reactDirectory" && npm i
